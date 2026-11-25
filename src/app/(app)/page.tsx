@@ -89,11 +89,14 @@ export default function HomePage() {
 
   return (
     <>
-      <header className="pb-2 pt-4">
-        <p className="text-sm font-medium capitalize text-muted">{formatDayLong(today)}</p>
-        <h1 className="text-[32px] font-bold leading-tight">
-          {greeting()} {me.display_name} 👋
-        </h1>
+      <header className="flex items-end justify-between gap-3 pb-2 pt-4">
+        <div className="min-w-0">
+          <p className="text-sm font-medium capitalize text-muted">{formatDayLong(today)}</p>
+          <h1 className="text-[32px] font-bold leading-tight">
+            {greeting()} {me.display_name} 👋
+          </h1>
+        </div>
+        {isParent && <ThinkOfYouButton className="shrink-0 whitespace-nowrap" />}
       </header>
 
       {holidayNow ? (
@@ -107,8 +110,7 @@ export default function HomePage() {
       ) : null}
 
       {isParent && (
-        <div className="mt-4 grid grid-cols-[auto_1fr] items-stretch gap-3">
-          <ThinkOfYouButton />
+        <div className="mt-3 min-w-0">
           <MoodSummary />
         </div>
       )}

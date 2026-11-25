@@ -4,6 +4,7 @@ L'app privée de notre famille : agenda, messages, souvenirs, jeux et sorties.
 C'est une **app web installable sur iPhone** (PWA), avec de vraies notifications push, sans App Store.
 
 > **Pour l'installer :** suivez le guide pas à pas [`docs/PARAMETRAGE.md`](docs/PARAMETRAGE.md).
+> **Hébergement sur le serveur Noesia** (`famille.noesia.cloud`) : [`docs/DEPLOIEMENT_NOESIA.md`](docs/DEPLOIEMENT_NOESIA.md).
 
 ## Ce que fait l'app
 

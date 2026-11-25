@@ -1,0 +1,30 @@
+# ══════════════════════════════════════════════════════════════
+# Bloc à AJOUTER dans /opt/noesia/docker-compose.yml, section
+# « services: », juste après app-tcm. (Ne pas remplacer le fichier :
+# comparer d'abord avec la version du serveur, cf. DEPLOIEMENT.md.)
+#
+# Produit distinct de l'ERP : dépôt /opt/famille. Il ne partage que
+# le Caddy de la plateforme — ses données vivent chez Supabase,
+# pas dans le Postgres de Noesia.
+# ══════════════════════════════════════════════════════════════
+  app-famille:
+    build:
+      context: ../famille
+      # Inscrites dans le code du navigateur au moment du build :
+      # changer l'une d'elles impose un « docker compose build ».
+      args:
+        NEXT_PUBLIC_SUPABASE_URL:             ${FAMILLE_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${FAMILLE_SUPABASE_PUBLISHABLE_KEY}
+        NEXT_PUBLIC_VAPID_PUBLIC_KEY:         ${FAMILLE_VAPID_PUBLIC_KEY}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      NEXT_PUBLIC_SUPABASE_URL:             ${FAMILLE_SUPABASE_URL}
+      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${FAMILLE_SUPABASE_PUBLISHABLE_KEY}
+      NEXT_PUBLIC_VAPID_PUBLIC_KEY:         ${FAMILLE_VAPID_PUBLIC_KEY}
+      SUPABASE_SECRET_KEY: ${FAMILLE_SUPABASE_SECRET_KEY}
+      VAPID_PRIVATE_KEY:   ${FAMILLE_VAPID_PRIVATE_KEY}
+      VAPID_SUBJECT:       ${FAMILLE_VAPID_SUBJECT}
+      CRON_SECRET:         ${FAMILLE_CRON_SECRET}
+      SCHOOL_LOCATION:     Bordeaux

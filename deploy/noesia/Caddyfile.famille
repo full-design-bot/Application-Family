@@ -1,0 +1,32 @@
+# ── Application : NOESIA FAMILY ────────────────────────────────
+# Bloc à AJOUTER à la fin de /opt/noesia/Caddyfile.
+# Produit distinct, servi par app-famille (dépôt /opt/famille).
+# Pas d'« import commun » : l'app a besoin de l'appareil photo
+# (photos, souvenirs) et sert son propre service worker.
+famille.{$BASE_DOMAIN} {
+	encode zstd gzip
+
+	header {
+		X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+		-X-Powered-By
+	}
+
+	# Photos envoyées depuis l'iPhone (déjà compressées côté app).
+	request_body {
+		max_size 20MB
+	}
+
+	reverse_proxy app-famille:3000
+
+	log {
+		output file /data/famille-access.log {
+			roll_size 10MB
+			roll_keep 5
+		}
+	}
+}

@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, isSupabaseConfigured } from "@/lib/supabase/env";
 
 // Pages accessibles sans être connecté
-const PUBLIC_PATHS = ["/connexion", "/installer", "/configuration", "/api/cron", "/api/holidays"];
+const PUBLIC_PATHS = ["/connexion", "/installer", "/configuration", "/api/cron", "/api/holidays", "/api/health"];
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;

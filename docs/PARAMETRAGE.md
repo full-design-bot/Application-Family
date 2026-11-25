@@ -88,6 +88,8 @@ Notez aussi :
 
 ## Étape 5 — Mettre l'app en ligne avec Vercel (10 min)
 
+> 🏠 **Vous avez le serveur Noesia ?** Suivez plutôt [`DEPLOIEMENT_NOESIA.md`](DEPLOIEMENT_NOESIA.md) à la place des étapes 5 et 6 : l'app sera sur `https://famille.noesia.cloud`.
+
 1. Créez un compte sur [vercel.com](https://vercel.com) en vous connectant avec GitHub.
 2. **Add New → Project**, puis choisissez le dépôt **Application-Family**.
 3. Dans **Environment Variables**, ajoutez les variables du fichier `.env.example` :

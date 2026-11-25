@@ -1,0 +1,5 @@
+# Noesia Family — tâches planifiées (rappels, capsules, photos éphémères,
+# question du jour). À copier dans /etc/cron.d/noesia-famille, chmod 600,
+# en remplaçant <CRON_SECRET> par la valeur de FAMILLE_CRON_SECRET.
+SHELL=/bin/sh
+*/5 * * * * root curl -fsS -m 50 -H "Authorization: Bearer <CRON_SECRET>" https://famille.noesia.cloud/api/cron > /dev/null 2>> /var/log/noesia-famille-cron.log

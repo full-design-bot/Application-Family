@@ -1,6 +1,6 @@
 import "server-only";
 
-import webpush from "web-push";
+import * as webpush from "web-push";
 import { adminSupabase } from "@/lib/supabase/server";
 
 export interface PushPayload {

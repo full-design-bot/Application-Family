@@ -27,11 +27,15 @@ export default function ReglagesPage() {
   const [bioAvailable, setBioAvailable] = useState(false);
   const [hasBio, setHasBio] = useState(false);
   const [pin, setPin] = useState("");
+  const [standaloneWarning, setStandaloneWarning] = useState(false);
+  const [supported, setSupported] = useState(true);
 
   useEffect(() => {
     currentSubscription().then((s) => setPushOn(!!s));
     biometricAvailable().then(setBioAvailable);
     setHasBio(hasBiometricCredential());
+    setStandaloneWarning(isIOS() && !isStandalone());
+    setSupported(pushSupported());
   }, []);
 
   async function saveProfile() {
@@ -84,7 +88,6 @@ export default function ReglagesPage() {
     router.refresh();
   }
 
-  const standaloneWarning = typeof window !== "undefined" && isIOS() && !isStandalone();
 
   return (
     <>
@@ -143,7 +146,7 @@ export default function ReglagesPage() {
             ? "…"
             : pushOn
               ? "Les notifications sont activées sur cet appareil."
-              : pushSupported()
+              : supported
                 ? "Les notifications ne sont pas encore activées sur cet appareil."
                 : "Notifications indisponibles ici."}
         </p>

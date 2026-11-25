@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { OccurrenceCard } from "@/components/agenda/OccurrenceCard";
 import { DailyQuestionCard, MoodSummary, ThinkOfYouButton } from "@/components/couple";
+import { GamesTurnCard } from "@/components/jeux/GamesTurnCard";
 import { Button, Card, EmptyState, SectionTitle, useToast } from "@/components/ui";
 import { loadUpcoming, nextCountdownEvent, subscribeEvents, type CountdownOccurrence, type Occurrence } from "@/lib/agenda";
 import { addDaysISO, formatDateFull, formatDayLong, toParisISODate, toParisTime, todayISO } from "@/lib/dates";
@@ -183,6 +184,9 @@ export default function HomePage() {
         <>
           <SectionTitle>💬 Nous deux</SectionTitle>
           <DailyQuestionCard />
+          <div className="mt-3">
+            <GamesTurnCard />
+          </div>
         </>
       )}
 

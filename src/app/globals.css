@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Noesia Family — thème : sobre et chaleureux, coins arrondis,
+   mode sombre automatique.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #faf6f1;
+  --card: #ffffff;
+  --card-2: #f3ece4;
+  --ink: #2b2420;
+  --muted: #8a7d73;
+  --line: #ebe2d8;
+  --accent: #e07a5f;       /* terracotta */
+  --accent-ink: #ffffff;
+  --accent-soft: #fbe5dd;
+  --sage: #81b29a;
+  --sage-soft: #e3f0e9;
+  --sky: #3d5a80;
+  --sky-soft: #e1e8f2;
+  --sand: #f2cc8f;
+  --sand-soft: #fbf0dc;
+  --rose: #d66b8f;
+  --rose-soft: #f8e1ea;
+  --danger: #c8553d;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161210;
+    --card: #221d1a;
+    --card-2: #2c2622;
+    --ink: #f4ede6;
+    --muted: #a89a8f;
+    --line: #362f2a;
+    --accent: #ec8c71;
+    --accent-ink: #1b1411;
+    --accent-soft: #3d2620;
+    --sage: #95c4ad;
+    --sage-soft: #1f312a;
+    --sky: #8fb0d9;
+    --sky-soft: #1e2938;
+    --sand: #f2cc8f;
+    --sand-soft: #3a3020;
+    --rose: #e88aab;
+    --rose-soft: #3a2029;
+    --danger: #ef7b62;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-sage: var(--sage);
+  --color-sage-soft: var(--sage-soft);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  --color-sand: var(--sand);
+  --color-sand-soft: var(--sand-soft);
+  --color-rose: var(--rose);
+  --color-rose-soft: var(--rose-soft);
+  --color-danger: var(--danger);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Zones sûres de l'iPhone (encoche, barre d'accueil) */
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Empêche le zoom automatique d'iOS sur les champs (taille >= 16px) */
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop {
+  animation: pop 0.45s ease-out both;
+}
+
+@keyframes floatup {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120px) scale(1.6); opacity: 0; }
+}
+.animate-floatup {
+  animation: floatup 1.4s ease-out forwards;
+}
